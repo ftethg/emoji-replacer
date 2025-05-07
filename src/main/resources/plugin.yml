@@ -1,0 +1,19 @@
+name: EmojiReplacer
+version: '1.0-SNAPSHOT'
+main: ru.filop.EmojiReplacer
+api-version: '1.21'
+authors: [ filop ]
+description: classiccraft
+website: https://classiccraft.ru
+commands:
+  emojireplacer:
+    description: EmojiReplacer main command
+    usage: /<command> list [page]
+    permission: emojireplacer.use
+permissions:
+  emojireplacer.use:
+    default: true
+  emojireplacer.reload:
+    default: op
+  emojireplacer.list:
+    default: true

@@ -1,0 +1,7 @@
+permission: emojireplacer.default
+smile:
+  - ":)"
+  - ":-)"
+grin:
+  - ":D"
+  - "=D"
