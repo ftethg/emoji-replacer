@@ -5,13 +5,13 @@ The plugin adds the ability to add emojis to minecraft.
 
 You can add different characters to the config.
 
-# emoji.yml
+emoji.yml
 *emotion or symbol*:
     - a word or symbol inside
     - similar to the upper one
 
 example:
-#emoji.yml
+emoji.yml
 💀:
   - skull
   - skeleton
@@ -23,13 +23,13 @@ There will be an addition soon in the form of a resource pack and a config.
 
 В конфиг можно добавлять разные символы.
 
-# emoji.yml
+emoji.yml
 *эмоция или символ*:
     - слово или символ внутри
     - аналогично верхнему
 
 пример:
-# emoji.yml
+emoji.yml
 💀:
   - skull
   - skeleton
