@@ -18,17 +18,10 @@ public class DiscordListener {
     @Subscribe
     public void onDiscordMessage(DiscordGuildMessagePreProcessEvent event) {
         String originalMessage = event.getMessage().getContentDisplay();
-
-        // Печатаем исходное сообщение в консоль для отладки
         plugin.getLogger().info("Original Discord Message: " + originalMessage);
 
-        // Заменяем все эмодзи с помощью метода replaceEmojis
         String replacedMessage = replaceEmojis(originalMessage);
-
-        // Печатаем сообщение после замены эмодзи
         plugin.getLogger().info("Replaced Discord Message: " + replacedMessage);
-
-        // Формируем финальное сообщение с заменой
         String format = plugin.getConfig().getString("discord-format", "[Discord] %username% > %message%");
         String finalMessage = format
                 .replace("%username%", event.getAuthor().getName())
@@ -38,26 +31,19 @@ public class DiscordListener {
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.sendMessage(finalMessage);
         }
-
-        // Также выводим в консоль
         Bukkit.getConsoleSender().sendMessage(finalMessage);
-
-        // Останавливаем обработку сообщения Discord, так как оно уже отправлено в Minecraft
         event.setCancelled(true);
     }
 
-    // Метод для замены эмодзи в сообщении
     private String replaceEmojis(String message) {
-        // Используем шаблон для поиска всех эмодзи (например, :smile:)
-        Pattern pattern = Pattern.compile(":(\\w+):");  // Например, :smile:
+        Pattern pattern = Pattern.compile(":(\\w+):");
         Matcher matcher = pattern.matcher(message);
 
         StringBuffer result = new StringBuffer();
 
-        // Ищем и заменяем эмодзи
         while (matcher.find()) {
             String emoji = matcher.group(1);
-            String minecraftEmoji = plugin.getEmojiMap().get(emoji); // Получаем Minecraft-эквивалент эмодзи
+            String minecraftEmoji = plugin.getEmojiMap().get(emoji); 
             if (minecraftEmoji != null) {
                 matcher.appendReplacement(result, minecraftEmoji);
             }
