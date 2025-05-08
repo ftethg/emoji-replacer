@@ -26,8 +26,6 @@ public class DiscordListener {
         String finalMessage = format
                 .replace("%username%", event.getAuthor().getName())
                 .replace("%message%", replacedMessage);
-
-        // Отправляем сообщение всем игрокам в Minecraft
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.sendMessage(finalMessage);
         }
